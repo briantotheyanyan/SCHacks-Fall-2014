@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Other's data</h1>
+<form action ="" method="post">
+<input type="button" name="button" value="Go Back">
+
+</form>
+
+</body>
+</html>

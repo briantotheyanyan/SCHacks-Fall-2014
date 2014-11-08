@@ -71,28 +71,4 @@ def clearDatabases():
     for x in databases:
         x.drop()
 
-def timesToString(array):
-    string = ""
-    start = 0
-    end = 0
-    index = 0
-    toCount = False
-    for x in array:
-        if x == 1 and toCount == False:
-            toCount = True
-            start = index
-            end = index
-        elif x == 1:
-            end = index
-        elif toCount:
-            string = string + str(start) + "-" + str(end) + ", "
-            toCount = False
-        index = index + 1
-    return string
-def arrToString(array):
-    x = []
-    for i in array:
-        x.append(timesToString(i))
-    return x
-
-#clearDatabases()
+clearDatabases()
