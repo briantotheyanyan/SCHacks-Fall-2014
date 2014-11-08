@@ -67,7 +67,6 @@ def yourdata():
         username = request.cookies.get('username')
         userSchedule = database.getAllUser(username)        
         times = database.arrToString(userSchedule[1])
-        times = times[0:len(times)-2]
         return render_template('yourdata.html',dayList=userSchedule[0],timeList=times)
     elif request.form["button"] == "Go Back":
         resp = make_response(redirect(url_for('scheduleMaker')))
