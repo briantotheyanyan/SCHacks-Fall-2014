@@ -7,7 +7,7 @@ res=db.authenticate('admin','pwd')
 Accounts = db.Accounts
 AccountsSchedules = db.AccountSchedules
 GlobalSchedules = db.GlobalSchedules
-
+databases = [Accounts,AccountsSchedules,GlobalSchedules]
 def verifyUser(username,password):
     if(Accounts.find({'username':username,'password':password}).count() != 0):
         return True
@@ -16,20 +16,20 @@ def verifyUser(username,password):
 def addUser(username,password):
     if(verifyUser(username,password)):
        return False
-    Accounts.insert({'username':username,'password':password})
+    Accounts.insert({'username':username,'password':password,'times':[]})
     return True
 
 def addUserTime(username, day, timeStart, timeEnd):
-    if(AcountsSchedules.find({'username':username,'day':day}).count() == 0):
+    if(AccountsSchedules.find({'username':username,'day':day}).count() == 0):
         a=[]
         for i in range(24):
             a.append(False)
-        AccountsSchedules.insert({'username':username,'day':day,'times':times})
+        AccountsSchedules.insert({'username':username,'day':day,'times':a})
     currentUser = AccountsSchedules.find_one({'username':username,'day':day})['times']
     while(timeStart < timeEnd):
         currentUser[timeStart] = True
         timeStart = timeStart + 1
-    AccountSchedules.update({'username':username,'day':day},{"$set":{'times':currentUser}})
+    AccountsSchedules.update({'username':username,'day':day},{"$set":{'times':currentUser}})
 
 def addGlobalTime(day, timeStart, timeEnd):
     if(GlobalSchedules.find({'day':day}).count() == 0):
@@ -43,8 +43,20 @@ def addGlobalTime(day, timeStart, timeEnd):
         timeStart = timeStart + 1
     GlobalSchedules.update({'day':day}, {"$set": {'times':currentDay}})
 
-def getDataForTime(day, timeStart):
-    if(GlobalSchedules.find({"day":day}.count()) == 0):
+def getGlobalDataForTime(day, timeStart):
+    if(GlobalSchedules.find({"day":day}).count() == 0):
         return 0
     currentDay = GlobalSchedules.find_one({'day':day})['times']
     return currentDay[timeStart]
+
+def getUserDataForTime(username, day, startTime):
+    if(AccountsSchedules.find({'username':username,'day':day}).count() == 0):
+        return 0
+    current = AccountsSchedules.find_one({'username':username,'day':day})['times']
+    return current[startTime]
+
+def clearDatabases():
+    for x in databases:
+        x.drop()
+
+clearDatabases()
