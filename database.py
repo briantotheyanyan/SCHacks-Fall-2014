@@ -31,6 +31,12 @@ def addUserTime(username, day, timeStart, timeEnd):
         timeStart = timeStart + 1
     AccountsSchedules.update({'username':username,'day':day},{"$set":{'times':currentUser}})
 
+def getAllUser(username):
+    alluser = AccountsSchedules.find({'username':username})
+    schedulesbyUser = []
+    for x in alluser:
+        schedulesbyUser.append([str(x['day']).encode('ascii','ignore'),int(x['time'])])
+
 def addGlobalTime(day, timeStart, timeEnd):
     if(GlobalSchedules.find({'day':day}).count() == 0):
         a=[]
