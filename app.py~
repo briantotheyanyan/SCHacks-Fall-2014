@@ -42,11 +42,11 @@ def scheduleMaker():
             date = ""
             if month < 10:
                 date = "0"
-            date = date + month + "/"
+            date = date + str(month) + "/"
             if day < 10:
                 date = date + "0"
-            date = date + day + "/"
-            date = date + year
+            date = date + str(day) + "/"
+            date = date + str(year)
             database.addUserTime(username,date,hour1,hour2)
             database.addGlobalTime(day,hour1,hour2)
             resp = make_response(redirect(url_for('scheduleMaker')))
@@ -64,12 +64,14 @@ def scheduleMaker():
 @app.route('/yourdata', methods=['GET','POST'])
 def yourdata():
     if request.method == 'GET':
-        return render_template('failure.html')
+        request.cookies.get('username')
+        return render_template('yourdata.html')
 
 @app.route('/otherdata', methods=['GET','POST'])
 def otherdata():
     if request.method == 'GET':
-        return render_template('failure.html')
+        request.cookies.get('username')
+        return render_template('otherdata.html')
     
 
 if __name__=="__main__":

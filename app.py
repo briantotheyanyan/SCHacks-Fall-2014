@@ -64,13 +64,22 @@ def scheduleMaker():
 @app.route('/yourdata', methods=['GET','POST'])
 def yourdata():
     if request.method == 'GET':
-        return render_template('failure.html')
+        request.cookies.get('username')
+        return render_template('yourdata.html')
+    elif(request.form["button"] == "Go Back"):
+        resp = make_response(redirect(url_for('scheduleMaker')))
+        resp.set_cookie('username',username)
+        return resp
 
 @app.route('/otherdata', methods=['GET','POST'])
 def otherdata():
     if request.method == 'GET':
-        return render_template('failure.html')
-    
+        request.cookies.get('username')
+        return render_template('otherdata.html')
+    elif(request.form["button"] == "Go Back"):
+        resp = make_response(redirect(url_for('scheduleMaker')))
+        resp.set_cookie('username',username)
+        return resp    
 
 if __name__=="__main__":
     app.debug=True
