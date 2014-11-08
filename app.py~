@@ -18,23 +18,46 @@ def main():
         password = request.form['password']
         if request.form['button'] == "login":
             if(database.verifyUser(username,password)):
-                return redirect(url_for('success'))
-            return redirect(url_for('failure'))
+                resp = make_response(redirect(url_for('scheduleMaker')))
+                resp.set_cookie('username',username)
+                return resp
+            return redirect(url_for('main'))
         elif request.form['button'] == "register":
             database.addUser(username,password)
             return redirect(url_for('main'))
 
-@app.route('/success', methods=['GET','POST'])
-def success():
+@app.route('/scheduleMaker', methods=['GET','POST'])
+def scheduleMaker():
     if request.method == 'GET':
-        return render_template('success.html')
-    return
+        username = request.cookies.get('username')    
+        return render_template('makeSchedule.html')
+    else:
+        username = request.cookies.get('username')
+        if request.form["button"] == "Submit":
+            month = request.form["month"]
+            day = request.form["day"]
+            year = request.form["year"]
+            hour1 = request.form["hour1"]
+            hour2 = request.form["hour2"]
+            date = ""
+            if month < 10:
+                date = "0"
+            date = date + month + "/"
+            if day < 10:
+                date = date + "0"
+            date = date + day + "/"
+            date = date + year
+            database.addUserTime(username,date,hour1,hour2)
+            resp = make_response(redirect(url_for('yourdata')))
+            resp.set_cookie('username',username)
+            return resp
+            
 
-@app.route('/failure', methods=['GET','POST'])
-def failure():
+@app.route('/yourdata', methods=['GET','POST'])
+def yourdata():
     if request.method == 'GET':
         return render_template('failure.html')
-    return
+    
 
 if __name__=="__main__":
     app.debug=True
