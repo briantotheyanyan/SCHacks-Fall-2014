@@ -9,6 +9,3 @@ app.secret_key = "secret"
 
 @app.out('/', methods=['GET','POST'])
 def main():
-    if request.method == 'GET':
-        return render_template('home.html')
-    
