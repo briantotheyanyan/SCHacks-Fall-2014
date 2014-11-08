@@ -2,7 +2,9 @@ from flask import request,Flask,render_template, url_for,redirect,request,make_r
 from time import gmtime, strftime, localtime
 import urllib2,json
 import database
+import datetime
 
+now = datetime.datetime.now()
 
 app = Flask(__name__)
 app.secret_key = "secret"
@@ -25,7 +27,7 @@ def main():
 @app.route('/success', methods=['GET','POST'])
 def success():
     if request.method == 'GET':
-        return render_template('success.html')
+        return render_template('makeSchedule.html')
     return
 
 @app.route('/failure', methods=['GET','POST'])
