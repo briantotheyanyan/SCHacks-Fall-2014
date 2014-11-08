@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Welcome to our unnamed project </h1>
+Username:  <input type="text" name="username">
+Password: <input type="text" name="password">
+<button type="button" name="login"> Login </button>
+<button type="button" name="register"> Register </button>
+</body>
+</html>
