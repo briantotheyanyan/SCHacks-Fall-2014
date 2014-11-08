@@ -9,16 +9,19 @@ app.secret_key = "secret"
 
 @app.route('/', methods=['GET','POST'])
 def main():
-    if(request.method == 'POST'):
-        if request.form['submit'] == 'login':
-            if(database.verifyUser(request.form['username'],request.form['password'])):
-                return redirect(url_for("/success"))
-            else:
-                return redirect(url_for("/failure"))
-        elif request.form["submit"] == 'register':
-            database.addUser(request.form['username'],request.form['password'])
-    else:
+    if(request.method == 'GET'):
         return render_template("home.html")
+    else:
+        username = request.form['username']
+        password = request.form['password']
+        if request.form['button'] == "login":
+            if(database.verifyUser(username,password)):
+                return url_for('success')
+            return url_for('failure')
+        elif request.form['button'] == "register":
+            database.addUser(username,password)
+            return url_for('main')
+
 @app.route('/success', methods=['GET','POST'])
 def success():
     if request.method == 'GET':
