@@ -16,11 +16,11 @@ def main():
         password = request.form['password']
         if request.form['button'] == "login":
             if(database.verifyUser(username,password)):
-                return url_for('success')
-            return url_for('failure')
+                return redirect(url_for('success'))
+            return redirect(url_for('failure'))
         elif request.form['button'] == "register":
             database.addUser(username,password)
-            return url_for('main')
+            return redirect(url_for('main'))
 
 @app.route('/success', methods=['GET','POST'])
 def success():

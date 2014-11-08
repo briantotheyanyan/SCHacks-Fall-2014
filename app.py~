@@ -20,7 +20,7 @@ def main():
             return url_for('/failure')
         elif request.form['button'] == "register":
             database.addUser(username,password)
-            return url_for('main')
+            return url_for('/')
 
 @app.route('/success', methods=['GET','POST'])
 def success():
