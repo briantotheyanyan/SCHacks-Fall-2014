@@ -7,8 +7,35 @@ import database
 app = Flask(__name__)
 app.secret_key = "secret"
 
-@app.out('/', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def main():
     if request.method == 'GET':
         return render_template('home.html')
-    
+    else:
+        if request.form['button'] == 'login':
+            username = request.form['username']
+            password = request.form['password']
+            if database.verifyUser(username,password):
+                return redirect(url_for('success'))
+            return redirect(url_for('failure'))
+        elif request.form['button'] == 'register':
+            username = request.form['username']
+            password = request.form['password']
+            database.addUser(username,password)
+            return redirect(url_for('/'))
+    return
+@app.route('/success', methods=['GET','POST'])
+def success():
+    if request.method == 'GET':
+        return render_template('success.html')
+    return
+
+@app.route('/failure', methods=['GET','POST'])
+def failure():
+    if request.method == 'GET':
+        return render_template('failure.html')
+    return
+
+if __name__=="__main__":
+    app.debug=True
+    app.run(port=5000)
