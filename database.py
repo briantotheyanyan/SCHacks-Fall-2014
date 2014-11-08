@@ -42,6 +42,16 @@ def getAllUser(username):
     a.append(times)
     return a
 
+def getAllSchedules():
+    a = []
+    days = []
+    times = []
+    for x in AccountsSchedules.find():
+        days.append(x['day'])
+        times.append(x['times'])
+    a.append(days)
+    a.append(times)
+    return a
 
 def addGlobalTime(day, timeStart, timeEnd):
     if(GlobalSchedules.find({'day':day}).count() == 0):

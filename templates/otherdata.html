@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>Other's data</h1>
-<form action ="" method="post">
-<input type="button" name="button" value="Go Back">
-<table>
+<h1>Other data</h1>
+<table style="width:100%">
 <tr>
 <th> day </th>
-<th> time <th>
-</th>
-{for x in scheduleList}
-<tr>
-<td> x[0] </td>
-<td> x[1] </td>
-</tr>
+{% for x in dayList %}
+<td> {{x}} </td>
 {% endfor %}
+</tr>
+
+<tr>
+<th> times </th>
+{% for x in timeList %}
+<td> {{x}} </td>
+{% endfor %}
+</tr>
 
 
 </table>
+
+<form action="" method="POST">
+<input type="submit" name="button" value="Go Back">
 </form>
 
 </body>

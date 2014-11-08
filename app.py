@@ -84,8 +84,11 @@ def yourdata():
 def otherdata():
     if request.method == 'GET':
         username = request.cookies.get('username')
-        return render_template('otherdata.html')
+        schedule = database.getAllSchedules()
+        times = database.arrToString(schedule[1])
+        return render_template('otherdata.html',dayList=schedule[0],timeList=times)
     elif(request.form["button"] == "Go Back"):
+        username = request.cookies.get('username')
         resp = make_response(redirect(url_for('scheduleMaker')))
         resp.set_cookie('username',username)
         return resp    
