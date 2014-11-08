@@ -59,4 +59,3 @@ def clearDatabases():
     for x in databases:
         x.drop()
 
-clearDatabases()
