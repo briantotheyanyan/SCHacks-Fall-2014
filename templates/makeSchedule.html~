@@ -4,7 +4,8 @@
 <h1>Make your schedule</h1>
 <form action ="" method = post>
 <p>Enter the day you are busy in MM/DD/YYYY format</p>
-<select name="month">
+<select name="month" selected="selected">
+
 {% for number in range(1,13) %}
 <option value="{{number}}">{{number}}</option>
 {% endfor %}
@@ -12,39 +13,39 @@
 
 <select name="day">
 {% for number in range(1,32) %}
-<option value="{{number}}">{{number}}</option>
+<option value="{{number}}" selected="selected">{{number}}</option>
 {% endfor %}
 </select>
 
 <select name="year">
 {% for number in range(1900,2015) %}
-<option value="{{number}}">{{number}}</option>
+<option value="{{number}}" selected="selected">{{number}}</option>
 {% endfor %}
 </select>
 
-<p>Enter the time you are busy in HH:MM-HH:MM format</p>
+<p>Enter the time you are busy in HH:MM-HH:MM format military time</p>
 <p>
 <select name="hour1">
 {% for number in range(0,24) %}
-<option value="{{number}}">{{number}}</option>
+<option value="{{number}}" selected="selected">{{number}}</option>
 {% endfor %}
 </select>
 
 <select name="minute1">
 {% for number in range(0,60) %}
-<option value="{{number}}">{{number}}</option>
+<option value="{{number}}" selected="selected">{{number}}</option>
 {% endfor %}
 </select>
 -
 <select name="hour2">
 {% for number in range(0,24) %}
-<option value="{{number}}">{{number}}</option>
+<option value="{{number}}" selected="selected">{{number}}</option>
 {% endfor %}
 </select>
 
 <select name="minute2">
 {% for number in range(0,60) %}
-<option value="{{number}}">{{number}}</option>
+<option value="{{number}}" selected="selected">{{number}}</option>
 {% endfor %}
 </select>
 </p>

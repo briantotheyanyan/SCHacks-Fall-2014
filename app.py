@@ -69,6 +69,7 @@ def yourdata():
         times = database.arrToString(userSchedule[1])
         return render_template('yourdata.html',dayList=userSchedule[0],timeList=times)
     elif request.form["button"] == "Go Back":
+        username = request.cookies.get('username')
         resp = make_response(redirect(url_for('scheduleMaker')))
         resp.set_cookie('username',username)
         return resp

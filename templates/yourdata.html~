@@ -20,7 +20,7 @@
 
 </table>
 
-<form action="" method="post">
+<form action="" method="POST">
 <input type="button" name="button" value="Go Back">
 </form>
 
