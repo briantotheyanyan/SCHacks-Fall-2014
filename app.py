@@ -34,20 +34,21 @@ def scheduleMaker():
     else:
         username = request.cookies.get('username')
         if request.form["button"] == "Submit":
-            month = request.form["month"]
-            day = request.form["day"]
-            year = request.form["year"]
-            hour1 = request.form["hour1"]
-            hour2 = request.form["hour2"]
+            month = int(request.form["month"])
+            day = int(request.form["day"])
+            year = int(request.form["year"])
+            hour1 = int(request.form["hour1"])
+            hour2 = int(request.form["hour2"])
             date = ""
             if month < 10:
                 date = "0"
-            date = date + month + "/"
+            date = date + str(month) + "/"
             if day < 10:
                 date = date + "0"
-            date = date + day + "/"
-            date = date + year
+            date = date + str(day) + "/"
+            date = date + str(year)
             database.addUserTime(username,date,hour1,hour2)
+            database.addGlobalTime(day,hour1,hour2)
             resp = make_response(redirect(url_for('scheduleMaker')))
             resp.set_cookie('username',username)
             return resp
