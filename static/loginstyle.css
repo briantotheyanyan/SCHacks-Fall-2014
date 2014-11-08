@@ -1,0 +1,35 @@
+h1
+{
+	color:#FFCC00;
+	text-shadow:1px 0px black;
+	text-align:center;
+}
+body
+{
+	background: #990000;
+}
+.center
+{
+	box-shadow: 5px 5px 5px #888888;
+	border-radius:20px;
+	width:40%;
+	margin: -25% auto;
+	height:250px;
+	background: white;
+
+}
+#pass
+{
+	margin-bottom:10px;
+}
+label
+{
+	margin-left:5%;
+}
+.center input
+{
+	width:90%;	
+	margin-left:5%;
+	clear:both;
+	margin-top:5px;
+}
