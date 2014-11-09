@@ -34,11 +34,17 @@ def scheduleMaker():
     else:
         username = request.cookies.get('username')
         if request.form["button"] == "Submit":
-            month = int(request.form["month"])
-            day = int(request.form["day"])
-            year = int(request.form["year"])
-            hour1 = int(request.form["hour1"])
-            hour2 = int(request.form["hour2"])
+            try:
+                month = int(request.form["month"])
+                day = int(request.form["day"])
+                year = int(request.form["year"])
+                hour1 = int(request.form["hour1"])
+                hour2 = int(request.form["hour2"])
+            except ValueError:
+                resp= make_response(redirect(url_for('scheduleMaker')))
+                resp.set_cookie('username',username)
+                return resp
+               
             date = ""
             if month < 10:
                 date = "0"
@@ -64,9 +70,12 @@ def scheduleMaker():
 @app.route('/yourdata', methods=['GET','POST'])
 def yourdata():
     if request.method == 'GET':
-        request.cookies.get('username')
-        return render_template('yourdata.html')
-    elif(request.form["button"] == "Go Back"):
+        username = request.cookies.get('username')
+        userSchedule = database.getAllUser(username)        
+        times = database.arrToString(userSchedule[1])
+        return render_template('yourdata.html',dayList=userSchedule[0],timeList=times)
+    elif request.form["button"] == "Go Back":
+        username = request.cookies.get('username')
         resp = make_response(redirect(url_for('scheduleMaker')))
         resp.set_cookie('username',username)
         return resp
@@ -74,9 +83,12 @@ def yourdata():
 @app.route('/otherdata', methods=['GET','POST'])
 def otherdata():
     if request.method == 'GET':
-        request.cookies.get('username')
-        return render_template('otherdata.html')
+        username = request.cookies.get('username')
+        schedule = database.getAllSchedules()
+        times = database.arrToString(schedule[1])
+        return render_template('otherdata.html',dayList=schedule[0],timeList=times)
     elif(request.form["button"] == "Go Back"):
+        username = request.cookies.get('username')
         resp = make_response(redirect(url_for('scheduleMaker')))
         resp.set_cookie('username',username)
         return resp    

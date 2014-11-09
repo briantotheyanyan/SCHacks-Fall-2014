@@ -46,7 +46,7 @@ def getAllSchedules():
     a = []
     days = []
     times = []
-    for x in AccountsSchedules.find():
+    for x in AccountsSchedules.find({'username':username}):
         days.append(x['day'])
         times.append(x['times'])
     a.append(days)
