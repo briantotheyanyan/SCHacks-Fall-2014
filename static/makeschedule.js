@@ -10,18 +10,18 @@ $( "select" ).one("change",function() {
 	var target = ".pill";
 	target += event.target.id;
 	console.log(target); 
- $(String(target)).animate({position:"absolute",top:"-=150"}, 500);
- 	counter+=1; 
+	$(String(target)).animate({position:"absolute",top:"-=150"}, 500);
+	counter+=1; 
 });
 
 $("#final").click(function(){
-	if(counter==5)
-	{
+	if(counter>=5)
+	    {
 		$("#submission").submit(); 
-	}
+	    }
 	else
-	{
+	    {
 		event.preventDefault(); 
-		alert("You didn't quite fill out everything");
-	}
+		alert("You didn't quite fill out everything" + counter);
+	    }
 });
