@@ -1,0 +1,57 @@
+@font-face {
+    font-family: ubuntu;
+    src: url(Ubuntu-R.ttf);
+}
+*
+{
+	font-family: ubuntu, Times;
+	margin:0;
+	padding:0;
+}
+body
+{
+	background: #990000;
+}
+@font-face {
+    font-family: ubuntu;
+    src: url(Ubuntu-R.ttf);
+}
+.banner
+{
+	box-shadow: 5px 5px 5px #888888;
+	border-radius:20px;
+	width:20%;
+	background:white;
+	height:70px;
+	text-align:center;
+	vertical-align: middle;
+	margin: 5% auto 5% auto;
+}
+.banner *
+{
+	text-align:center;
+}
+.banner input
+{
+	margin:5px 5px 5px 5px;
+}
+.tableDiv
+{
+	box-shadow: 5px 5px 5px #888888;
+	border-radius:20px;
+	background:white;
+	width:50%;
+	margin: 0 auto;
+}
+td
+{
+	height:50px;
+	text-align:center;
+}
+input
+{
+	border-radius:20px;
+	display:block;
+	width:50%;
+	margin:15% auto;
+}

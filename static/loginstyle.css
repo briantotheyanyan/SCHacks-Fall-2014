@@ -8,6 +8,7 @@
 }
 h1
 {
+	padding-top:20px;
 	color:#FFCC00;
 	text-shadow:1px 0px black;
 	text-align:center;
@@ -22,9 +23,8 @@ body
 	border-radius:20px;
 	width:40%;
 	margin: -25% auto;
-	height:250px;
+	height:350px;
 	background: white;
-
 }
 #pass
 {
@@ -39,5 +39,5 @@ label
 	width:90%;	
 	margin-left:5%;
 	clear:both;
-	margin-top:5px;
+	margin-top:15px;
 }
