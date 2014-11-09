@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<title>Your Calendar</title>
+	<link rel="stylesheet" href="../static/calendar.css">
+</head>
 <body>
+<div class = "banner">
+<form action="" method="POST">
+<input type="submit" name="button" value="Go Back">
+</form>
+
 <h1>Your data</h1>
+</div>
 <table style="width:100%">
 <tr>
 <th> day </th>
@@ -17,12 +28,13 @@
 {% endfor %}
 </tr>
 
-
 </table>
 
-<form action="" method="POST">
-<input type="submit" name="button" value="Go Back">
-</form>
-
 </body>
+<script>
+	$(document).ready(function(){
+
+	
+	});
+</script>
 </html>
