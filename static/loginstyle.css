@@ -1,3 +1,11 @@
+@font-face {
+    font-family: ubuntu;
+    src: url(Ubuntu-R.ttf);
+}
+*
+{
+	font-family: ubuntu, Times;
+}
 h1
 {
 	color:#FFCC00;

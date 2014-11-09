@@ -1,57 +1,126 @@
 <!DOCTYPE HTML>
 <html>
+<head>
+	<title>Add To Schedule</title>
+	<link rel="stylesheet" href="../static/addschedule.css">
+</head>
 <body>
+<<<<<<< HEAD
 <h1>Make your schedule</h1>
 <form action ="" method = post>
 <p>Enter the day you are busy in MM/DD/YYYY format</p>
 <select name="month" selected="selected">
+<option value=""></option>
+=======
+<div class = "banner">
+	<h1>Scheduling... </h1>
+</div>
+<form id = "submission" action ="" method = post>
+<div>
 
+<div class = "pillM" id = "month">
+<label for="month">Month</label>
+<select name="month" id = "M">
+>>>>>>> steven
 {% for number in range(1,13) %}
 <option value="{{number}}">{{number}}</option>
 {% endfor %}
 </select>
+</div>
 
-<select name="day">
+<<<<<<< HEAD
+<select name="day" selected="selected">
+<option value=""></option>
+=======
+<div class = "pillD" id = "day">
+<label for="day">Day</label>
+<select name="day" id = "D">
+>>>>>>> steven
 {% for number in range(1,32) %}
-<option value="{{number}}" selected="selected">{{number}}</option>
+<option value="{{number}}">{{number}}</option>
 {% endfor %}
 </select>
+</div>
 
-<select name="year">
+<<<<<<< HEAD
+<select name="year" selected="selected">
+<option value=""></option>
+=======
+<div class = "pillY" id = "year">
+<label for="year">Year</label>
+<select name="year" id = "Y">
+>>>>>>> steven
 {% for number in range(1900,2015) %}
-<option value="{{number}}" selected="selected">{{number}}</option>
+<option value="{{number}}">{{number}}</option>
 {% endfor %}
 </select>
+</div>
 
+<<<<<<< HEAD
 <p>Enter the time you are busy in HH:MM-HH:MM format military time</p>
 <p>
+<select name="hour1" selected="selected">
+<option value=""></option>
+=======
+</div> 
+<div class = "pill1">
+<label for "hour1">From</label>
 <select name="hour1">
+>>>>>>> steven
 {% for number in range(0,24) %}
-<option value="{{number}}" selected="selected">{{number}}</option>
+<option value="{{number}}">{{number}}</option>
 {% endfor %}
 </select>
+<<<<<<< HEAD
 
-<select name="minute1">
+<select name="minute1" selected="selected">
+<option value=""></option>
+=======
+<select name="minute1" id = "1">
+>>>>>>> steven
 {% for number in range(0,60) %}
-<option value="{{number}}" selected="selected">{{number}}</option>
+<option value="{{number}}">{{number}}</option>
 {% endfor %}
 </select>
+<<<<<<< HEAD
 -
+<select name="hour2" selected="selected">
+<option value=""></option>
+=======
+</div>
+<div class = "pill2">
+<label for "hour2">To</label>
 <select name="hour2">
+>>>>>>> steven
 {% for number in range(0,24) %}
-<option value="{{number}}" selected="selected">{{number}}</option>
+<option value="{{number}}">{{number}}</option>
 {% endfor %}
 </select>
+<<<<<<< HEAD
 
-<select name="minute2">
+<select name="minute2" selected="selected">
+<option value=""></option>
+=======
+<select name="minute2" id ="2">
+>>>>>>> steven
 {% for number in range(0,60) %}
-<option value="{{number}}" selected="selected">{{number}}</option>
+<option value="{{number}}">{{number}}</option>
 {% endfor %}
 </select>
+</div>
 </p>
 
 <p></p>
-<input type="submit" name="button" value="Submit">
+<div class = "center">
+<input id = "final" type="submit" name="button" value="Submit">
+</div>
+<div class = "footer">
 <input type="submit" name="button" value="See your data">
 <input type="submit" name="button" value="See other data">
+</div>
 </form>
+
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src = "../static/makeschedule.js" ></script>
+</html>
