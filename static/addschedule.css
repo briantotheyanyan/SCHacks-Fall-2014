@@ -1,0 +1,75 @@
+*
+{
+	margin:0;
+	padding:0;
+}
+body
+{
+	background-image:url("./images/small_steps.png");
+	background-repeat: repeat;
+}
+.banner
+{
+	margin-top:-20%;
+	background: white;
+	text-align:center; 
+	width:100%;
+	border-radius: 20px; 
+	box-shadow: 0 3px 3px 3px #888888;
+}
+@font-face {
+    font-family: ubuntu;
+    src: url(Ubuntu-R.ttf);
+}
+*
+{
+	font-family: ubuntu, Times;
+}
+.footer
+{
+	width:100%;
+	height:50px;
+	background:gray;
+	position: absolute;
+	bottom:0;
+	left:0;
+}
+
+.footer	input
+{
+	margin-top:2px;
+	margin-right:5%;
+	float:right;
+	width:7.5em;
+	height:3em;
+}
+.pillM, .pillD,.pillY
+{
+	margin-top:15%;
+	background:white;
+	display:inline-block;
+	width:32%;
+	border-radius: 20px;
+	position:relative;
+	box-shadow: 0 3px 3px 3px #888888;
+}
+.pillM *, .pillD *,.pillY *, .pill2 *, .pill1 *
+{
+	margin: 0 45%;
+	display:inline;
+}
+.pill2, .pill1
+{
+	position:relative;	
+	margin-top:20px;
+	background:white;
+	display:inline-block;
+	width:49%;
+	border-radius: 20px;
+	box-shadow: 0 3px 3px 3px #888888;
+}
+.center
+{
+	margin-top:10px;
+	margin-left: 48%;
+}
